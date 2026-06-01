@@ -39,22 +39,25 @@ export default function Navbar() {
     // Logout logic here
     router.push('/login');
   };
-  const handleStoreVerification = () => {
-    router.push('/user/store_verification');
+  const handleYourStore = () => {
+    router.push('/owner/store_detail');
   };
   const handleProfile = () => {
-    router.push('/user/profile');
-  };
-  const handlePassword = () => {
-    router.push('/user/password');
+    router.push('/owner/profile');
   };
   const handleSettings = () => {
-    router.push('/user/settings');
+    router.push('/owner/settings');
   };
+  const handleOrders = () => {
+    router.push('/owner/orders');
+  };
+    const handleMenu = () => {
+    router.push('/');
+    };
   return (
     <>
       <style>{styles}</style>
-      <header className="fixed top-0 left-0 w-full flex items-center justify-between px-8 py-4 border-b bg-white shadow-md z-50">
+      <header className=" top-0 left-0 w-full flex items-center justify-between px-8 py-4 border-b bg-white shadow-md z-50">
       {/* Logo */}
       <Link href="/shop" className="text-2xl font-bold flex items-center gap-2">
         <Image
@@ -67,26 +70,8 @@ export default function Navbar() {
         <span>Atributo.</span>
       </Link>
 
-      {/* Search Bar */}
-      <div className="flex-1 mx-8">
-        <div className="flex items-center bg-gray-100 rounded-full px-4 py-2 border border-gray-300">
-          <input
-            type="text"
-            placeholder="Search"
-            className="bg-transparent flex-1 outline-none text-gray-700"
-          />
-          <button className="ml-2 text-gray-500">
-            🔍
-          </button>
-        </div>
-      </div>
-
       {/* Right Icons */}
       <div className="flex items-center gap-6">
-        {/* Cart Icon */}
-        <Link href="/user/cart" className="cursor-pointer text-xl hover:scale-110 transition-transform">
-          🛒
-        </Link>
 
         {/* Profile Dropdown */}
         <div className="relative">
@@ -103,17 +88,12 @@ export default function Navbar() {
               <button 
               onClick={handleProfile}
               className="w-full text-left px-4 py-2 menu-item rounded-t-lg">
-                Profile
+                Store Profile
               </button>
               <button 
-              onClick={handleStoreVerification}
+              onClick={handleYourStore}
               className="w-full text-left px-4 py-2 menu-item">
-                Store Verification
-              </button>
-              <button 
-                onClick={handlePassword}
-                className="w-full text-left px-4 py-2 menu-item">
-                Change Password
+                Your Store
               </button>
               <button 
                 onClick={handleSettings}
@@ -121,9 +101,14 @@ export default function Navbar() {
                 Settings
               </button>
               <button 
-              onClick={handleLogout}
+                onClick={handleOrders}
+                className="w-full text-left px-4 py-2 menu-item">
+                Orders Received
+              </button>
+              <button 
+              onClick={handleMenu}
               className="w-full text-left px-4 py-2 menu-item border-t rounded-b-lg">
-                Logout
+                Main Menu
               </button>
             </div>
           )}
