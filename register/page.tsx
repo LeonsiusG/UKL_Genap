@@ -3,11 +3,20 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function RegisterPage() {
   const [email, setEmail] = useState('');
-  const [confirmEmail, setConfirmEmail] = useState('');
+  const [confirmpassword, setConfirmPassword] = useState('');
   const [password, setPassword] = useState('');
+  const router = useRouter();
+
+  const handleRegister = () => {
+    /**
+     * TODO: sambungkan ke backend register di sini
+     */
+    router.push('/login');
+  };
 
   return (
     <div className="flex h-screen">
@@ -55,14 +64,14 @@ export default function RegisterPage() {
             />
           </div>
 
-          {/* Confirm Email Input */}
+          {/* Confirm Password Input */}
           <div className="mb-6">
-            <label className="block text-sm font-bold mb-2">Confirm Email</label>
+            <label className="block text-sm font-bold mb-2">Confirm Password</label>
             <input
-              type="email"
-              placeholder="abcd@gmail.com"
-              value={confirmEmail}
-              onChange={(e) => setConfirmEmail(e.target.value)}
+              type="password"
+              placeholder="123456789"
+              value={confirmpassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
               className="w-125 px-4 py-3 border-2 border-gray-800 rounded-lg focus:outline-none focus:border-black"
             />
           </div>
@@ -80,7 +89,10 @@ export default function RegisterPage() {
           </div>
 
           {/* Register Button */}
-          <button className="w-125 bg-gray-300 text-black font-bold py-3 rounded-lg mb-8 hover:bg-gray-400 transition">
+          <button 
+            onClick={handleRegister}
+            className="w-125 bg-gray-300 text-black font-bold py-3 rounded-lg mb-8 hover:bg-gray-400 transition"
+          >
             Register
           </button>
 
